@@ -10,9 +10,23 @@
 		</layout>
 	</appender>
 	
+	<!-- 경로는 현재 위치한 '드라이브' 기준으로 설정된다. -->
+	<appender name="fileAppender" class="org.apache.log4j.FileAppender">
+		<param name="file" value="/log/mylog.txt"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="fileAppender2" class="org.apache.log4j.FileAppender">
+		<param name="file" value="/log/mylog2.html"/>
+		<layout class="org.apache.log4j.HTMLLayout"/>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="com.ezen.springmvc">
-		<level value="info" />
+	<!-- 로그레벨을 수정하면 설정한 레벨부터 상위까지 출력된다 -->
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -31,11 +45,19 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-
+	
+	<!-- My Logger -->
+	<logger name="commons">
+		<level value="info"/>
+	</logger>
+	
 	<!-- Root Logger -->
+	<!-- 모든 설정의 기본값 -->
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
+		<appender-ref ref="fileAppender" />
+		<appender-ref ref="fileAppender2" />
 	</root>
 	
 </log4j:configuration>
