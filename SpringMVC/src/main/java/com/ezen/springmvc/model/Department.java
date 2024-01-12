@@ -10,17 +10,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 //@Getter
-//@Setter
+@Setter
 @ToString
 public class Department {
 
-	@Setter
+	@Getter
 	private Integer department_id;
 	@Getter
 	private String department_name;
- 	@Getter	@Setter
+	@Getter
 	private Integer manager_id;
- 	@Setter 
+	@Getter
 	private Integer location_id;
-	
+
 }

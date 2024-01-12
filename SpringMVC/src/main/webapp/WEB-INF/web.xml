@@ -30,4 +30,23 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<!-- 인코딩 설정을 서블렛에 직접 할 수 없으므로 필터를 이용 인코딩을 설정한다 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<servlet-name>appServlet</servlet-name>
+	</filter-mapping>
+
 </web-app>
