@@ -19,6 +19,7 @@
 			<th>FRUIT_PRICE</th>
 			<th>FRUIT_GRADE</th>
 			<th>COUNTRY_ID</th>
+			<th></th>
 		</tr>
 	
 	<c:forEach items="${fruits}" var="fruit">
@@ -28,6 +29,7 @@
 			<td>${fruit.fruit_price}</td>
 			<td>${fruit.fruit_grade}</td>
 			<td>${fruit.country_id}</td>
+			<td><button onclick="location.href='./update?fruit_id=${fruit.fruit_id}';">수정</button></td>
 		</tr>
 	</c:forEach>
 	</table>

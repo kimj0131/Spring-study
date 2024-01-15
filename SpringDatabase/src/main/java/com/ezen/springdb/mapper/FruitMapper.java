@@ -15,7 +15,7 @@ public interface FruitMapper {
 	@Select("SELECT * FROM fruits")
 	List<FruitDTO> getAll();
 	
-	@Select("select * from frutits where fruit_id=#{id}")
+	@Select("select * from fruits where fruit_id=#{id}")
 	FruitDTO get(@Param("id") int fruit_id);
 	
 	@Insert("insert into fruits(fruit_id, fruit_name, fruit_price, fruit_grade, country_id) "
@@ -26,6 +26,6 @@ public interface FruitMapper {
 	int delete(@Param("id") int fruit_id);
 	
 	@Update("UPDATE fruits SET fruit_name=#{fruit_name}, fruit_price=#{fruit_price}, "
-			+ "fruit_grade=#{fruit_grade}, country_id=#{country_id}")
+			+ "fruit_grade=#{fruit_grade}, country_id=#{country_id} WHERE fruit_id=${fruit_id}")
 	int update(FruitDTO dto);
 }
