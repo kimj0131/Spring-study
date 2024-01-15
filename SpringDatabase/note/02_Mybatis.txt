@@ -1,0 +1,15 @@
+02_mybatis.txt
+
+
+# Mybatis
+
+ - 개발자는 쿼리문만 적으면 알아서 DB에서 데이터를 꺼내오는 프레임워크
+ - 거의 모든 jdbc 관련 코드를 자동으로 생성해준다
+ - 개발자는 사용할 쿼리문의 종류와 쿼리문의 내용만 작성하면 된다
+ 
+# 필요한 의존성
+
+ - mybatis
+ - mybatis-spring
+ - spring-jdbc
+ 
