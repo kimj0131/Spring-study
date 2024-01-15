@@ -31,12 +31,18 @@
 		<tr>
 			<th>과일 등급</th>
 			<td>
-				<select name="fruit_grade">
-					<option value="A+">A+</option>
-					<option value="A">A</option>
-					<option value="B">B</option>
-					<option value="C">C</option>
-					<option value="D">D</option>
+				<c:set value="A+/A/B/C/D" var="grades"/>
+				<select name="fruit_grade" >
+				<c:forTokens items="${grades}" delims="/" var="grade">
+					<c:choose>
+						<c:when test="${grade == fruit.fruit_grade}">
+							<option value="${grade}" selected>${grade}</option>
+						</c:when>
+						<c:otherwise>
+							<option value="${grade}">${grade}</option>
+						</c:otherwise>
+					</c:choose>
+				</c:forTokens>
 				</select>
 			</td>
 		</tr>
@@ -45,7 +51,14 @@
 			<td>
 				<select name="country_id" >
 				<c:forEach items="${countries}" var="country">
-					<option value="${country.country_id}">${country.country_name}</option>
+				<c:choose>
+					<c:when test="${country.country_id == fruit.country_id}">
+						<option value="${country.country_id}" selected>${country.country_name}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${country.country_id}">${country.country_name}</option>
+					</c:otherwise>
+				</c:choose>
 					<!-- <option value="AR">Argentina</option>
 					<option value="BE">Belgium</option>
 					<option value="BR">Brazil</option>

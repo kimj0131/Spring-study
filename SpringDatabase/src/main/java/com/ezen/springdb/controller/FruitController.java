@@ -44,7 +44,8 @@ public class FruitController {
 	
 	@PostMapping("/fruit/update")
 	public String update(FruitDTO dto) {
-		fruitMapper.update(dto);
+//		int row = fruitMapper.update(dto);
+		int row = fruitMapperXML.updateFruit(dto);
 		return "redirect:/fruit/list";
 	}
 }

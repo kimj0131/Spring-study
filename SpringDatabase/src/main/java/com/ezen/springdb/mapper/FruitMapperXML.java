@@ -10,9 +10,9 @@ public interface FruitMapperXML {
 	
 	FruitDTO get(int fruit_id);
 	
-	int add(FruitDTO dto);
+	int addFruit(FruitDTO dto);
 	
-	int update(FruitDTO dto);
+	int updateFruit(FruitDTO dto);
 	
-	int delete(int fruit_id);
+	int deleteFruit(int fruit_id);
 }

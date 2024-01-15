@@ -6,4 +6,18 @@
 		select * from fruits
 	</select>
 	
+	<insert id="addFruit">
+		insert into fruits(fruit_id, fruit_name, fruit_price, fruit_grade, country_id)
+		values(fruit_id_seq.nextval, #{fruit_name},#{fruit_price}, #{fruit_grade}, #{country_id})
+	</insert>
+	
+	<update id="updateFruit">
+		update fruits set 
+			fruit_name=#{fruit_name}, fruit_price=#{fruit_price}, 
+			fruit_grade=#{fruit_grade}, country_id=#{country_id}
+		where fruit_id=#{fruit_id}
+	</update>
+	
+	<delete id="deleteFruit"></delete>
+	
 </mapper>
