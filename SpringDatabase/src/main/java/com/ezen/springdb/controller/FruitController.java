@@ -17,8 +17,6 @@ import lombok.extern.log4j.Log4j;
 @Controller
 public class FruitController {
 	
-	// @GetMapping, @PostMapping ... 등으로 @RequestMapping을 줄여 사용할 수 있다.
-	
 	@Autowired
 	FruitMapper fruitMapper;
 	
@@ -28,7 +26,9 @@ public class FruitController {
 	@Autowired
 	CountryMapper countryMapper;
 	
+	
 
+	// @GetMapping, @PostMapping ... 등으로 @RequestMapping을 줄여 사용할 수 있다.
 	@GetMapping("/fruit/list")
 	public void list(Model model) {
 		log.info(fruitMapperXML);

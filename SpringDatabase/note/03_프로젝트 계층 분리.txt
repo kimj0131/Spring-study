@@ -1,0 +1,88 @@
+03_프로젝트 계층 분리.txt
+
+
+# 프로젝트 계층
+
+ - 프로젝트를 구성하는 소스코드들을 계층별로 분리하여 작성하는 것
+ - 화면 계층 (Presentation Layer)
+ - 비즈니스 계층 (Business Layer)
+ - 영속 계층 (Persistence Layer)
+ - 계층을 분리하여 코드를 작성하면 재사용성이 좋아진다
+ 
+# 화면 계층
+
+ - 프로그램 실행 시 화면에 보여지는 코드를 작성하는 계층
+ 
+
+# 비즈니스 계층
+
+ - 고객의 요구사항에 대한 내용(비즈니스 로직)을 구현하는 계층
+ - 웹 서비스에서는 하나의 요청이 한 번에 여러개의 비즈니스 로직을 필요로하는 경우도 있고
+   하나의 비즈니스 로직이 다양한 요청에서 활용되는 경우도 있기 때문에 소스 코드의 분리가 필요하다
+ 
+ 
+# 영속 계층
+
+ - 저장되어있는 데이터(파일, DB 등)를 꺼내오는 작업을 구현하는 계층
+ - 하나의 비즈니스 로직이 여러곳의 데이터를 요구하는 경우도 있고
+ - 하나의 데이터 꺼내는 기능이 여러곳에서 활용될 수도 있기 때문에 소스 코드의 분리가 필요하다
+
+// 
+  ex >> 
+	과일 관련 기능들						 영속 계층				비즈니스 계층
+		- 과일 목록 보기 			->  과일을 꺼내옴		   꺼내온 과일을 실어놓음
+		- 과일 수정하기  			->  과일을 꺼내옴,
+									국가 코드를 꺼내옴			
+	
+	사원 관련 기능들
+		- 사원정보와 근무지국가 함께보기 	->  국가 코드를 꺼내옴
+									(재사용성을 위해 소스코드를 분리하는 작업이 필요)
+//
+
+
+# 스프링 웹 프로젝트에서 각 계층을 표현하는 클래스 이름 규칙
+
+ - 비즈니스 로직 : xxxService(인터페이스), xxxServiceImpl(해당 인터페이스 구현)	
+ - 영속 계층 : xxxMapper(Mybatis), xxxDAO, xxxRepository
+ 			(저장소로부터 데이터를 꺼내오는 역할을 하는 코드들)
+ - 데이터 클래스 : xxxDTO, xxxVO(읽기 전용의 느낌, 하지만 구분하지않고 쓰기도 한다)
+ 
+
+# 웹 프로젝트에서 패키지를 나누는 방식
+
+ - 프로젝트 규모가 작은 경우
+ 
+   컨트롤러, 비즈니스 계층, 영속 계층, DTO를 구분할 수 있도록 패키지를 작성한다
+   
+   ex) com.company.pizzashop.controller.MenuController
+   	   com.company.pizzashop.controller.MemberController
+   	   com.company.pizzashop.controller.OrderController
+   	   com.company.pizzashop.service.MenuService
+   	   com.company.pizzashop.service.MemberService
+   	   com.company.pizzashop.service.OrderService
+   	   com.company.pizzashop.mapper.MenuMapper
+   	   com.company.pizzashop.mapper.MemberMapper
+   	   com.company.pizzashop.mapper.OrderMapper
+   	   com.company.pizzashop.dto.PizzaDTO
+   	   com.company.pizzashop.dto.MemberDTO
+   	   ...
+ 
+ - 프로젝트 규모가 큰 경우
+ 
+   우선 비즈니스 단위 별로 패키지 구분을 한 뒤 다시 내부에서 각 계층을 구분한다
+   
+   ex) com.company.pizzashop.member.controller
+  	   com.company.pizzashop.member.service
+   	   com.company.pizzashop.member.mapper
+   	   com.company.pizzashop.member.dto
+       com.company.pizzashop.menu.controller
+       com.company.pizzashop.menu.service
+       com.company.pizzashop.menu.mapper
+       com.company.pizzashop.menu.dto
+       ...
+ 
+ 
+ 
+		
+		
+		
