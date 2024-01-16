@@ -6,6 +6,10 @@
 		select * from fruits
 	</select>
 	
+	<select id="get" resultType="com.ezen.springdb.dto.FruitDTO">
+		select * from fruits where fruit_id=#{fruit_id}
+	</select>
+	
 	<insert id="addFruit">
 		insert into fruits(fruit_id, fruit_name, fruit_price, fruit_grade, country_id)
 		values(fruit_id_seq.nextval, #{fruit_name},#{fruit_price}, #{fruit_grade}, #{country_id})

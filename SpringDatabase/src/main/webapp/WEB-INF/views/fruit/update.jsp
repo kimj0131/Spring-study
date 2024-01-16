@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>${fruit.fruit_id}번 과일 수정 페이지</title>
+<c:if test="${param.updateResult == false}">
+	<script type="text/javascript">alert('작업 실패');</script>
+</c:if>
 </head>
 <body>
 
