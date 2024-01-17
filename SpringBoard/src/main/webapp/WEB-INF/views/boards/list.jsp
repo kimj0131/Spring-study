@@ -31,7 +31,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 					<td><a href="./detail?board_id=${board.board_id}">${board.board_title}</a></td>
 					<td>${board.board_writer}</td>
 					<td>${board.view_count}</td>
-					<td>${replySizes.get(board.board_id)}</td>
+					<td>
+						<a
+							id="replyPopup"
+							style="cursor: pointer"
+							onclick="open('reply/list?board_id=${board.board_id}', '_blank', 'width=700,height=300,top=150,left=' + Math.ceil((window.screen.width - 700)/2))"
+						>
+							${replySizes.get(board.board_id)}
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

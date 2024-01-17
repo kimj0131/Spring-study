@@ -17,6 +17,7 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public void getReplyList(Model model, int board_id) {
 
+		model.addAttribute("board_id", board_id);
 		model.addAttribute("replies", replyMapper.getReplyList(board_id));
 	}
 
