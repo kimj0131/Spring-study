@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.board.mapper.ReplyMapper">
+
+	<select id="getReplyList" resultType="com.ezen.board.dto.ReplyDTO">
+		select * from myreply where board_id=#{board_id} 
+			order by reply_id desc
+	</select>
+	
+	<!-- <select id="getBoardDetail" resultType="com.ezen.board.dto.BoardDTO">
+		select * from myboard where board_id=#{board_id}
+	</select> -->
+	
+	<insert id="writeReply">
+		insert into myreply(reply_id,board_id,reply_writer,reply_content,reply_password) 
+		values(myreply_id_seq.nextval,#{board_id},#{reply_writer},#{reply_content},#{reply_password})
+	</insert>
+	
+	<!-- <update id="updateBoard">
+		update myboard set
+			board_title=#{board_title}, board_content=#{board_content}
+		where board_id=#{board_id}
+	</update> -->
+	
+	<!-- <delete id="deleteBoard">
+		delete from myboard where board_id=#{board_id}
+	</delete> -->
+	
+</mapper>
