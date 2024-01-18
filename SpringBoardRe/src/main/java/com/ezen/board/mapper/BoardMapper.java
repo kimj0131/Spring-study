@@ -8,6 +8,8 @@ public interface BoardMapper {
 
 	List<BoardDTO> getAll();
 	
+	List<BoardDTO> getAllWithReplyCount();
+	
 	// db에서 BoardDTO 형식으로 꺼낸다
 	BoardDTO get(int board_id);
 	

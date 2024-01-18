@@ -8,6 +8,29 @@
     select * from myboard order by board_id desc
   </select>
   
+  <select id="getAllWithReplyCount" resultType="com.ezen.board.dto.BoardDTO">
+  	SELECT
+    	myboard.*,
+    	(SELECT COUNT(*) FROM myreply WHERE myreply.board_id = myboard.board_id) AS reply_count
+	FROM
+	    myboard
+	ORDER BY
+	    board_id DESC
+	    <!-- 
+	    	다른방법 1
+	    	select * from
+		    myboard m 
+		        left outer join(select board_id, count(*) as reply_count from myreply group by board_id) r
+		    on m.board_id = r.board_id;
+	     -->
+	     <!-- 
+	     	다른방법 2
+	     	select * from myboard left outer join
+			  	(select board_id, count(*) as reply_count from myreply group by board_id)
+			using (board_id);
+	      -->
+  </select>
+  
   <select id="get" resultType="com.ezen.board.dto.BoardDTO">
     select * from myboard where board_id=#{board_id}
   </select>

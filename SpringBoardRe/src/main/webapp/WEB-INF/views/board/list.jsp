@@ -23,6 +23,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 					<div class="board-id">${bid}</div>
 					<div class="board-title">
 						<a href="./detail?board_id=${bid}">${board.board_title}</a>
+						<a href="">[${empty board.reply_count ? 0 : board.reply_count}]</a>
 					</div>
 					<div class="board-writer">${board.board_writer}</div>
 					<div class="view-count">${board.view_count}</div>
