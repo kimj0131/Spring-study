@@ -1,0 +1,25 @@
+01_REST.txt
+
+# REST
+
+ - Http URI로 어떤 자원인지 식별하고 Http Request method로 해당 자원에 대한 CRUD를 구분하여 데이터만 응답하는 방식
+ - HTML 코드가 아닌 데이터만 응답하기 때문에 웹 브라우저가 아닌 다른 프로그램에서도 해당 서버를 활용할 수 있다는 장점이 있다
+ 
+ 
+ - Create, Insert(POST)
+  ex) POST:/employee (새 사원을 추가한다)
+ - Read, Select(GET)
+  ex) GET:/employee/130 (130번 사원을 조회한다)
+ - Update (PUT)
+  ex) PUT:/employee/130 (130번 사원의 정보를 수정한
+ - Delete (DELETE)
+  ex) DELETE:/employee/130 (130번 사원을 삭제한다)
+  
+  
+  
+@ Spring REST
+
+ - @RestController : 해당 클래스가 RestController임을 표시
+ - @ResponseBody : 일반 컨트롤러 내부의 해당 메서드가 뷰 페이지 대신 데이터를 응답한다는 것을 표시
+ - @RequestBody : 요청에 실려온 데이터를 바인딩해주는 어노테이션
+ - @PathVariable : 요청 URI의 일부분을 변수로 활용할 수 있다 (일반 컨트롤러에서도 가능)
