@@ -13,11 +13,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
 		<c:if test="${!empty boards}">
 			<div class="board-list">
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
+				<div>[no]</div>
+				<div>[title]</div>
+				<div>[writer]</div>
+				<div>[view]</div>
+				<div>[write date]</div>
 				<c:forEach items="${boards}" var="board">
 					<c:set value="${board.board_id}" var="bid" />
 					<div class="board-id">${bid}</div>
