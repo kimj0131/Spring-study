@@ -3,6 +3,7 @@ package com.ezen.springrest.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ezen.springrest.dto.EmployeeDTO;
+import com.ezen.springrest.service.QuizService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -140,5 +142,19 @@ public class RestSampleController {
 	}
 	
 	
+	// 퀴즈
+	@Autowired
+	QuizService quizService;
+	
+	@GetMapping(value = "/quizJSON", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<EmployeeDTO> randomEmpsJSON() {
+		List<EmployeeDTO> emps = quizService.ranEmpList();
+		return emps;
+	}
+	@GetMapping(value = "/quizXML", produces = MediaType.APPLICATION_XML_VALUE)
+	public List<EmployeeDTO> randomEmpsXML() {
+		List<EmployeeDTO> emps = quizService.ranEmpList();
+		return emps;
+	}
 	
 }

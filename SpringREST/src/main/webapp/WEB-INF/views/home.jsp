@@ -9,7 +9,17 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<body>
 		<h1>Home!</h1>
 
+		<h3>
+			Quiz. 추첨 버튼을 누르면 랜덤으로 10명의 사원을 골라와서 화면에 출력해주는 기능을 만들어보세요(JSON버전과
+			XML버전 한번씩)
+		</h3>
 
+		<button id="refBtnJSON">추첨(JSON)</button>
+		<button id="refBtnXML">추첨(XML)</button>
+
+		<div id="refResultDiv1" style="display: grid; grid-template-columns: 1fr 1fr 1fr"></div>
+		<hr />
+		<div id="refResultDiv2" style="display: grid; grid-template-columns: 1fr 1fr 1fr"></div>
 		<hr />
 
 		<button id="btn1">버튼1</button>
