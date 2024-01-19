@@ -46,7 +46,7 @@ public class RestSampleController {
 	public EmployeeDTO value4() {
 		EmployeeDTO emp = new EmployeeDTO();
 		
-		emp.setEmployee_id(11);	
+		emp.setEmployee_id(15);	
 		emp.setFirst_name("만득");
 		emp.setLast_name("이");
 		return emp;

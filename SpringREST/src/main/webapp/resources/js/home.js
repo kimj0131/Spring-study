@@ -1,5 +1,8 @@
 const out = document.getElementById("out");
+const emps = document.getElementById("employees");
 const btn1 = document.getElementById("btn1");
+const btn2 = document.getElementById("btn2"); // JSON
+const btn3 = document.getElementById("btn3"); // XML
 
 btn1.addEventListener("click", (e) => {
 	// 1. Ajax 요청 객체 생성
@@ -28,5 +31,44 @@ btn1.addEventListener("click", (e) => {
 	xhttp.open("GET", "./rest/v1");
 
 	// 4. 요청을 보낸다 (location.href와 다르게 다음 페이지로 넘어가지 않는다.)
+	xhttp.send();
+});
+
+btn2.addEventListener("click", (e) => {
+	const xhttp = new XMLHttpRequest();
+	xhttp.addEventListener("readystatechange", (e) => {
+		if (xhttp.readyState === 4 && xhttp.status == 200) {
+			const cargo = xhttp.responseText;
+
+			// JSCN은 Javascript Object 형식의 문자열이지 오브젝트가 아니다
+			// 오브젝트로 변환하는 과정이 필요하다...
+			console.log(cargo);
+			console.log(typeof cargo);
+
+			// JSON으로 전달받은 Java의 데이터를 자바스크립트 오브젝트로 변환하여 활용
+			const obj = JSON.parse(cargo);
+			console.log(obj);
+			console.log("employee_id : " + obj.employee_id);
+			console.log("first_name : " + obj.first_name);
+			console.log("last_name : " + obj.last_name);
+
+			const newEmpId = document.createElement("div");
+			const newFirstName = document.createElement("div");
+			const newLastName = document.createElement("div");
+
+			newEmpId.classList.add("emp-id");
+			newFirstName.classList.add("emp-fname");
+			newLastName.classList.add("emp-lname");
+
+			newEmpId.innerHTML = obj.employee_id;
+			newFirstName.innerHTML = obj.first_name;
+			newLastName.innerHTML = obj.last_name;
+
+			emps.appendChild(newEmpId);
+			emps.appendChild(newFirstName);
+			emps.appendChild(newLastName);
+		}
+	});
+	xhttp.open("GET", "./rest/v4");
 	xhttp.send();
 });
