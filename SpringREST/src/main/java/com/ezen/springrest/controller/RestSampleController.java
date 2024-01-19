@@ -1,5 +1,8 @@
 package com.ezen.springrest.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -57,10 +60,43 @@ public class RestSampleController {
 	public EmployeeDTO value5() {
 		EmployeeDTO emp = new EmployeeDTO();
 		
-		emp.setEmployee_id(11);	
+		emp.setEmployee_id(18);	
 		emp.setFirst_name("자바");
 		emp.setLast_name("심");
 		return emp;
+	}
+	
+	// jackson-databind는 List<DTO>로 리턴하더라도 잘 변환해준다
+	@GetMapping(value = "/v6", produces = MediaType.APPLICATION_XML_VALUE)
+	public List<EmployeeDTO> value6() {
+		List<EmployeeDTO> emps = new ArrayList<>();
+		
+		EmployeeDTO emp1 = new EmployeeDTO();
+		emp1.setEmployee_id(18);	
+		emp1.setFirst_name("자바");
+		emp1.setLast_name("심");
+		
+		EmployeeDTO emp2 = new EmployeeDTO();
+		emp2.setEmployee_id(19);	
+		emp2.setFirst_name("씨플");
+		emp2.setLast_name("박");
+		
+		EmployeeDTO emp3 = new EmployeeDTO();
+		emp3.setEmployee_id(20);	
+		emp3.setFirst_name("이썬");
+		emp3.setLast_name("최");
+		
+		EmployeeDTO emp4 = new EmployeeDTO();
+		emp4.setEmployee_id(21);	
+		emp4.setFirst_name("씨샵");
+		emp4.setLast_name("김");
+		
+		emps.add(emp1);
+		emps.add(emp2);
+		emps.add(emp3);
+		emps.add(emp4);
+		
+		return emps;
 	}
 	
 	@GetMapping("/entity1")

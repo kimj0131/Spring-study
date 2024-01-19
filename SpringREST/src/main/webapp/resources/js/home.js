@@ -34,6 +34,7 @@ btn1.addEventListener("click", (e) => {
 	xhttp.send();
 });
 
+//
 btn2.addEventListener("click", (e) => {
 	const xhttp = new XMLHttpRequest();
 	xhttp.addEventListener("readystatechange", (e) => {
@@ -70,5 +71,36 @@ btn2.addEventListener("click", (e) => {
 		}
 	});
 	xhttp.open("GET", "./rest/v4");
+	xhttp.send();
+});
+
+//
+btn3.addEventListener("click", (e) => {
+	const xhttp = new XMLHttpRequest();
+	xhttp.addEventListener("readystatechange", (e) => {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			// 응답된 데이터의 최초의 모습
+			console.log(xhttp.responseText);
+
+			// responseXML로 전달받은 XML데이터를 document처럼 사용할 수 있다
+			console.dir(xhttp.responseXML);
+
+			const xmlDoc = xhttp.responseXML;
+			const emps = xmlDoc.getElementsByTagName("item");
+
+			console.log(emps);
+
+			for (let i = 0; i < emps.length; i++) {
+				console.log(`### emp${i} ###`);
+
+				const fields = emps[i].children;
+				for (let j = 0; j < fields.length; j++) {
+					console.log(fields[j].tagName, ":", fields[j].innerHTML);
+				}
+			}
+		}
+	});
+
+	xhttp.open("get", "./rest/v6");
 	xhttp.send();
 });
