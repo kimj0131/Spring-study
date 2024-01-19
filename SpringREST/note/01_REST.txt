@@ -23,3 +23,23 @@
  - @ResponseBody : 일반 컨트롤러 내부의 해당 메서드가 뷰 페이지 대신 데이터를 응답한다는 것을 표시
  - @RequestBody : 요청에 실려온 데이터를 바인딩해주는 어노테이션
  - @PathVariable : 요청 URI의 일부분을 변수로 활용할 수 있다 (일반 컨트롤러에서도 가능)
+ 
+ 
+# jackson-databind / jackson-dataformat-xml
+
+ - @ResponseBody 또는 @RestController로 자바빈 객체(DTO)를 응답하면 JSON형식 또는 XML형식 문자열로 변환하여 응답해주는 라이브러리
+ - 어떤 언어에서도 JSON 형식과 XML 형식은 해석하여 값으로 사용할 수 있기 때문에 범용성이 굉장이 높은 형식
+
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.15.3</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.fasterxml.jackson.dataformat</groupId>
+	    <artifactId>jackson-dataformat-xml</artifactId>
+	    <version>2.15.3</version>
+	</dependency>
+	
+	
+	

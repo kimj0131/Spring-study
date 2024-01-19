@@ -1,6 +1,8 @@
 package com.ezen.springrest.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,4 +62,32 @@ public class RestSampleController {
 		emp.setLast_name("심");
 		return emp;
 	}
+	
+	@GetMapping("/entity1")
+	public ResponseEntity<String> entity1(){
+		
+		ResponseEntity<String> resp = ResponseEntity
+			.status(HttpStatus.OK)
+			.contentType(MediaType.TEXT_HTML)
+			.body("<h1>The response I made</h1>");
+		
+		return resp;
+	}
+	
+	@GetMapping("/entity2")
+	public ResponseEntity<String> entity2(){
+		return ResponseEntity.ok("<h1>OK!!</h1>");
+	}
+	
+	// jackson-databind의 JSON형식 데이터 응답을 수동으로 구현해보기
+	@GetMapping("/entity3")
+	public ResponseEntity<String> entity3(){
+		return ResponseEntity
+				.status(200)
+				.contentType(MediaType.APPLICATION_JSON)
+				.body("{\"first_name\":\"틀린\", \"last_name\":\"코\"}");
+	}
+	
+	
+	
 }
