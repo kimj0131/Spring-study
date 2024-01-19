@@ -23,9 +23,9 @@ public class QuizServiceImpl implements QuizService {
 		List<EmployeeDTO> emps = quizMapper.getAll();
 		
 		List<EmployeeDTO> ranEmps = new ArrayList<>();
-		for (int i = 0; ranEmps.size() < 10; i++) {
-			Collections.shuffle(emps);
-			ranEmps.add(emps.get(0));
+		Collections.shuffle(emps);
+		for (int i = 0; i < 10; i++) {
+			ranEmps.add(emps.get(i));
 		}
 		
 		return ranEmps;
