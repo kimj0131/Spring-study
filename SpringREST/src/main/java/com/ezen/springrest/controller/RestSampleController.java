@@ -1,5 +1,6 @@
 package com.ezen.springrest.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,13 +30,34 @@ public class RestSampleController {
 	}
 
 	// jackson-databind : DTO를 응답하면 자동으로 json형식으로 만들어서 응답해준다
-	@GetMapping(value = "/v3", produces = "application/json; charset=UTF-8")
+	@GetMapping(value = "/v3", produces = "application/json")
 	public EmployeeDTO value3() {
 		EmployeeDTO emp = new EmployeeDTO();
 
 		emp.setEmployee_id(11);	
 		emp.setFirst_name("철수");
 		emp.setLast_name("김");
+		return emp;
+	}
+	
+	@GetMapping(value = "/v4", produces = MediaType.APPLICATION_JSON_VALUE)
+	public EmployeeDTO value4() {
+		EmployeeDTO emp = new EmployeeDTO();
+		
+		emp.setEmployee_id(11);	
+		emp.setFirst_name("만득");
+		emp.setLast_name("이");
+		return emp;
+	}
+	
+	// jackson-dataformat-xml : DTO를 XML형식 문자열로 응답해주는 라이브러리
+	@GetMapping(value = "/v5", produces = MediaType.APPLICATION_XML_VALUE)
+	public EmployeeDTO value5() {
+		EmployeeDTO emp = new EmployeeDTO();
+		
+		emp.setEmployee_id(11);	
+		emp.setFirst_name("자바");
+		emp.setLast_name("심");
 		return emp;
 	}
 }
