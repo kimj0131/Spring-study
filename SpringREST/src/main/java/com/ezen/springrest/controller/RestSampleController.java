@@ -89,5 +89,20 @@ public class RestSampleController {
 	}
 	
 	
+	@GetMapping("/entity4")
+	public ResponseEntity<EmployeeDTO> entity4(){
+		EmployeeDTO emp = new EmployeeDTO();
+		
+		emp.setEmployee_id(20);
+		emp.setFirst_name("Allen");
+		emp.setLast_name("Worker");
+		
+		return ResponseEntity
+				.status(200)
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(emp);
+	}
+	
+	
 	
 }

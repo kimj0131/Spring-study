@@ -42,4 +42,17 @@
 	</dependency>
 	
 	
+# ResponseEntity 응답하기
+
+ - 컨트롤러 메서드의 리턴 타입을 ResponsEntity로 설정하면 개발자가 직접 생성한 응답객체를 리턴할 수 있다
+ - 개발자가 직접 원하는 HTTP 상태 코드(status), 컨텐츠 타입(content-type), 내용(body)들을 설정하여 만들어낸 응답 객체를 응답할 수 있다
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 	
