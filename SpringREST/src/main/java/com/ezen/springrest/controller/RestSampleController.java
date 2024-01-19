@@ -23,7 +23,7 @@ public class RestSampleController {
 
 	@RequestMapping(value = "/v1", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
 	public String value1() {
-		return "<h1>Hello, Restful!</h1>";
+		return "Hello, Restful!";
 	}
 
 	@RequestMapping(value = "/v2", method = RequestMethod.GET, produces = "text/html; charset=UTF-8")
