@@ -2,6 +2,7 @@
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url value="/resources/js/home.js" var="homeJS" />
 <c:url value="/resources/js/homeQuiz.js" var="homeQuizJS" />
+<c:url value="/resources/js/homeQuiz2.js" var="homeQuiz2JS" />
 <html>
 	<head>
 		<title>Home</title>
@@ -24,12 +25,15 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 		<button id="btn1">버튼1</button>
 		<button id="btn2">버튼2(JSON)</button>
-		<button id="btn3">버튼2(XML)</button>
+		<button id="btn3">버튼3(XML)</button>
+		<hr />
+		<button id="btn4">버튼4(PUT방식 xhttp 요청)</button>
 
 		<div id="out"></div>
 		<div id="employees" style="display: grid; grid-template-columns: 1fr 1fr 1fr"></div>
 
 		<script type="text/javascript" src="${homeJS}"></script>
 		<script type="text/javascript" src="${homeQuizJS}"></script>
+		<script type="text/javascript" src="${homeQuizJS2}"></script>
 	</body>
 </html>

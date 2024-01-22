@@ -4,6 +4,9 @@ const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2"); // JSON
 const btn3 = document.getElementById("btn3"); // XML
 
+const btn4 = document.getElementById("btn4"); // PUT 해보기
+
+//
 btn1.addEventListener("click", (e) => {
 	// 1. Ajax 요청 객체 생성
 	const xhttp = new XMLHttpRequest();
@@ -103,4 +106,36 @@ btn3.addEventListener("click", (e) => {
 
 	xhttp.open("get", "./rest/v6");
 	xhttp.send();
+});
+
+// PUT 방식(Update)
+btn4.addEventListener("click", (e) => {
+	const xhttp = new XMLHttpRequest();
+	xhttp.addEventListener("readystatechange", (e) => {
+		console.log("응답받은 상태코드", xhttp.status);
+		if (xhttp.readyState == 4) {
+			if (xhttp.status == 200) {
+				console.log("요청이 잘 처리 되었습니다..");
+				console.log(JSON.parse(xhttp.responseText));
+			} else if (xhttp.status == 400) {
+				console.log("뭔가 잘 안됐습니다...");
+				alert("업데이트 실패!");
+			}
+		}
+	});
+	// ※ <input>의 데이터로 생성한 객체라고 가정
+	const userData = {
+		employee_id: 188,
+		first_name: "John",
+		last_name: "Doe",
+	};
+
+	xhttp.open("PUT", "./rest/emp");
+
+	// 데이터를 문자열로 보내야 직렬화가 가능하다
+	// 요청에 함께 실려가는 문자열이 어떤 내용인지 content-type을 통해 설명해야 한다
+	// JSON.parse(String) : JSON형식 문자열을 자바스크립트 객체로 변환해주는 메서드
+	// JSON.stringify(Object) : 자바스크립트 객체를 JSON형식 문자열로 변환해주는 메서드
+	xhttp.setRequestHeader("content-type", "application/json");
+	xhttp.send(JSON.stringify(userData));
 });

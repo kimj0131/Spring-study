@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -156,5 +158,31 @@ public class RestSampleController {
 		List<EmployeeDTO> emps = quizService.ranEmpList();
 		return emps;
 	}
+	
+	
+	
+	// Update
+	// @PutMapping방식으로 요청을 보내면 Update
+	@PutMapping("/emp")
+	public ResponseEntity<EmployeeDTO> updateEmp(@RequestBody EmployeeDTO dto){
+		
+		log.info("PUT!! : " + dto);
+		
+		// DB에 업데이트 후 결과를 얻어 온다고 가정
+		int result = (int)(Math.random() * 2);
+		
+		// 서버측에 결과에 따라 다른 상태 코드를 응답할 수 있다...
+		if (result == 1) {
+			// 업데이트가 성공적일때
+			// 상태코드 200과 업데이터 된 행을 함께 응답한다
+			// JSON타입으로 보내려면 설정해줘야함
+			return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(dto);
+		} else {
+			// 업데이트가 실패했을때  
+			// 상태코드 400과 null을 응답한다
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	
 	
 }
