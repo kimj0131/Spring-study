@@ -5,6 +5,7 @@ const refResultDiv1 = document.getElementById("refResultDiv1");
 const refResultDiv2 = document.getElementById("refResultDiv2");
 
 refBtnJSON.addEventListener("click", (e) => {
+	refResultDiv1.innerHTML = "";
 	const xhttp = new XMLHttpRequest();
 	xhttp.addEventListener("readystatechange", (e) => {
 		if (xhttp.readyState === 4 && xhttp.status == 200) {
@@ -27,14 +28,13 @@ refBtnJSON.addEventListener("click", (e) => {
 });
 
 refBtnXML.addEventListener("click", (e) => {
+	refResultDiv2.innerHTML = "";
 	const xhttp = new XMLHttpRequest();
 	xhttp.addEventListener("readystatechange", (e) => {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			const xmlDoc = xhttp.responseXML;
 			const emps = xmlDoc.getElementsByTagName("item");
 			for (let i = 0; i < emps.length; i++) {
-				console.log(`### emp${i} ###`);
-
 				const fields = emps[i].children;
 				for (let j = 0; j < fields.length; j++) {
 					const emp = document.createElement("div");
