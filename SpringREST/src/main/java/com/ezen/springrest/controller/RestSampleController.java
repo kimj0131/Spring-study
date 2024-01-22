@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ezen.springrest.dto.EmployeeDTO;
+import com.ezen.springrest.dto.FruitDTO;
+import com.ezen.springrest.mapper.FruitMapper;
 import com.ezen.springrest.service.QuizService;
 
 import lombok.extern.log4j.Log4j;
@@ -180,6 +183,44 @@ public class RestSampleController {
 		} else {
 			// 업데이트가 실패했을때  
 			// 상태코드 400과 null을 응답한다
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	
+	
+	// 퀴즈2
+	
+	@Autowired
+	FruitMapper fruitMapper;
+	
+	// insert
+	@PostMapping(value = "/fruit")
+	public ResponseEntity<FruitDTO> insertFruit(@RequestBody FruitDTO dto){
+		
+		int result = fruitMapper.addFruit(dto);
+		
+		if (result == 1) {
+			return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(dto);
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		
+	}
+	
+	// update
+	@PutMapping(value = "/fruit", produces = MediaType.APPLICATION_JSON_VALUE)
+//	@PutMapping(value = "/fruit/{fruit_id}")
+//	public ResponseEntity<FruitDTO> updateFruit(@PathVariable("fruit_id") Integer fruit_id, @RequestBody FruitDTO dto){
+	public ResponseEntity<FruitDTO> updateFruit(@RequestBody FruitDTO dto){
+//		int result = fruitMapper.updateFruit(fruit_id, dto);
+		int result = fruitMapper.updateFruit(dto);
+		
+//		log.info(fruit_id);
+		
+		if (result == 1) {
+//			return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(dto);
+			return ResponseEntity.ok(dto);
+		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
 	}
