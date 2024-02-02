@@ -27,6 +27,23 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 		<h3>Quiz2. REST방식으로 과일 테이블에 INSERT, UPDATE, DELETE를 구현해 보세요</h3>
 		<hr />
 
+		<h4>SELECT</h4>
+		<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr">
+			<div>과일번호</div>
+			<div>과일이름</div>
+			<div>과일가격</div>
+			<div>과일등급</div>
+			<div>생산지</div>
+
+			<c:forEach items="${fruits}" var="fruit">
+				<div>${fruit.fruit_id}</div>
+				<div>${fruit.fruit_name}</div>
+				<div>${fruit.fruit_price}</div>
+				<div>${fruit.fruit_grade}</div>
+				<div>${fruit.country_id}</div>
+			</c:forEach>
+		</div>
+
 		<h4>INSERT</h4>
 		과일 이름 : <input id="fruit_name_in" type="text" /> <br />
 		과일 가격 : <input id="fruit_price_in" type="number" /> <br />
@@ -101,12 +118,19 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 			</c:forEach>
 		</select>
 		<br />
+
 		<button id="fruitUpdateBtn">UPDATE</button>
 
 		<hr />
 
 		<h4>DELETE</h4>
 
+		번호 :
+		<select id="fruit_id_dl">
+			<c:forEach items="${fruits}" var="fruit">
+				<option value="${fruit.fruit_id}">${fruit.fruit_id}</option>
+			</c:forEach>
+		</select>
 		<button id="fruitDeleteBtn">DELETE</button>
 		<hr />
 

@@ -50,3 +50,18 @@ fruitUpdateBtn.addEventListener("click", (e) => {
 	xhttp.setRequestHeader("content-type", "application/json");
 	xhttp.send(JSON.stringify(fruitData));
 });
+
+const fruitDeleteBtn = document.getElementById("fruitDeleteBtn");
+const fruit_id_dl = document.getElementById("fruit_id_dl");
+fruitDeleteBtn.addEventListener("click", (e) => {
+	const xhttp = new XMLHttpRequest();
+	xhttp.addEventListener("readystatechange", (e) => {
+		if (xhttp.readyState == 4) {
+			if (xhttp.status != 200) {
+				alert("delete 실패");
+			}
+		}
+	});
+	xhttp.open("delete", "./rest/fruit");
+	xhttp.send(fruit_id_dl);
+});

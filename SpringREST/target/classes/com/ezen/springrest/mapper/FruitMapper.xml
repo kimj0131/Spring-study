@@ -3,7 +3,7 @@
 <mapper namespace="com.ezen.springrest.mapper.FruitMapper">
 
 	<select id="getAll" resultType="com.ezen.springrest.dto.FruitDTO">
-		select * from fruits
+		select * from fruits order by fruit_id desc
 	</select>
 	
 	<select id="get" resultType="com.ezen.springrest.dto.FruitDTO">
@@ -22,6 +22,8 @@
 		where fruit_id=#{fruit_id}
 	</update>
 	
-	<delete id="deleteFruit"></delete>
+	<delete id="deleteFruit">
+		delete fruits where fruit_id=#{fruit_id}
+	</delete>
 	
 </mapper>
